@@ -1,0 +1,84 @@
+.book-navbar {
+  background-color: #ffffff;
+  color: #212121;
+
+}
+
+
+.logo {
+  color: #7a1f3d
+}
+
+li a {
+  color: #212121;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  padding-bottom: 5px;
+  position: relative;
+  display: inline-block;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+}
+
+li a:hover {
+  color: #7a1f3d;
+}
+
+li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  background-color: #7a1f3d;
+  left: 0;
+  bottom: -7px;
+  height: 2px;
+}
+
+li a:hover::after {
+  width: 100%;
+  transition: width 0.3s ease;
+}
+
+.login {
+  background-color: #ffffff;
+  border: #7a1f3d solid 2px;
+  font-weight: 500;
+  color: #7a1f3d;
+  text-decoration: none;
+}
+
+.login:hover {
+  background-color: #7a1f3d;
+  color: white;
+}
+
+.sign-up {
+  background-color: #7a1f3d;
+  font-weight: 500;
+}
+.logout {
+  background-color: #ffffff;
+  border: #7a1f3d solid 2px;
+  font-weight: 500;
+  color: #7a1f3d;
+  text-decoration: none;
+}
+
+.logout:hover {
+  background-color: #7a1f3d;
+  color: white;
+}
+
+.search {
+  color: #7a1f3d;
+  font-size: 20px;
+}
+
+.cart {
+  color: #7a1f3d;
+  font-size: 20px;
+}

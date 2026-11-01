@@ -1,0 +1,57 @@
+.check-page {
+  background-color: #f5f3ef;
+  min-height: 75vh;
+}
+
+h2 {
+  color: #5a1622;
+  font-weight: bold;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+}
+
+.card h4 {
+  color: #7a1f3d;
+  font-weight: 600;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  padding: 10px 12px;
+}
+
+.form-control:focus {
+  border-color: #7a1f3d;
+  box-shadow: 0 0 0 0.2rem rgba(122, 31, 61, 0.15);
+}
+
+.btn {
+  background-color: #7a1f3d;
+  border-color: #7a1f3d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.btn:hover {
+  background-color: #5a1622;
+  border-color: #5a1622;
+}
+
+.card h6 {
+  color: #212121;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card strong {
+  color: #7a1f3d;
+}
+
+.border-top {
+  border-color: #dee2e6 !important;
+}

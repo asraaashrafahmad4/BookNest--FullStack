@@ -1,0 +1,29 @@
+<section class="details py-5">
+  <div class="container">
+    @if(book()){
+    <div class=" card shadow border-0 all">
+
+      <div class="row align-items-center g-5 ">
+        <div class="col-md-4 text-center">
+          <img [src]="book()?.image" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+          <div class="card-body p-4">
+            <h1 class="card-title mb-3"> {{book()?.title}}</h1>
+            <p class="text-muted"> {{book()?.author}} </p>
+            <p class="desc">{{ book()?.description}}</p>
+            <p>
+              <strong> Price: </strong>{{book()?.price}}
+
+            </p>
+            <a class="btn " (click)="addtocart()" routerLink="/cart">
+                Add to cart
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+
+  </div>
+</section>

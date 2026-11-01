@@ -1,0 +1,92 @@
+<section class="register-section">
+  <div class="container py-2 ">
+    <div class="text-center register-header ">
+      <h1>Create Account</h1>
+      <p>Create your BookNest account</p>
+    </div>
+    <div class="register-body">
+
+      <form class="card shadow-sm mx-auto register-form" (ngSubmit)="register()">
+        <div class="mb-1">
+          <label class="form-label">
+            Name
+          </label>
+          <input class="form-control" type="text" required placeholder="Enter your name" [(ngModel)]="name" name="name"
+            required #nameInput="ngModel">
+
+          @if(nameInput.invalid && nameInput.touched){
+          <small class="text-danger">
+            name is required
+
+          </small>
+          }
+        </div>
+
+        <div class="mb-1">
+          <label class="form-label">
+            Email
+          </label>
+          <input class="form-control" type="email" required placeholder="Enter your email" [(ngModel)]="email"
+            name="email" required #emailInput="ngModel">
+          @if(emailInput.invalid && emailInput.touched){
+          <small class="text-danger">
+            email is required
+
+          </small>
+          }
+        </div>
+
+        <div class="mb-1">
+          <label class="form-label">
+            Phone
+          </label>
+          <input class="form-control" type="number" required placeholder="Enter your phone" [(ngModel)]="phone"
+            name="phone" required #phoneInput="ngModel">
+          @if(phoneInput.invalid && phoneInput.touched){
+          <small class="text-danger">
+            phone is required
+          </small>
+          }
+
+        </div>
+
+
+        <div class="mb-1">
+          <label class="form-label">
+            Password
+          </label>
+          <input type="password" placeholder="Enter your password " required class="form-control" [(ngModel)]="password"
+            name="password" required #passwordInput="ngModel">
+          @if(passwordInput.invalid && passwordInput.touched){
+          <small class="text-danger">
+            password is required
+          </small>
+          }
+
+        </div>
+
+
+        <div class="mb-1">
+          <label class="form-label">
+            Confirm Pssword
+          </label>
+          <input type="password" placeholder="Enter your Confirm " required class="form-control"
+            [(ngModel)]="confirmPassword" name="confirmPassword" required #confirmPasswordInput="ngModel">
+          @if(confirmPasswordInput.invalid && confirmPasswordInput.touched){
+          <small class="text-danger">
+            Confirm Pssword is required
+          </small>
+          }
+
+        </div>
+
+        <button class="btn btn-dark" type="submit">Register</button>
+        <div class=" login">
+          <p>Aleardy have an account?</p>
+          <a routerLink="/login" routerLinkActive="active">Login</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>

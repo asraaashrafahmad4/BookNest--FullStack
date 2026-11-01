@@ -1,0 +1,79 @@
+<div class="order-page">
+  <div class="container py-5">
+
+    <h2 class="mb-4">
+      My Orders
+    </h2>
+
+    @if (order().length > 0) {
+
+    @for (order of order(); track $index) {
+
+    <div class="card shadow-sm p-4 mb-4">
+
+      <div class="d-flex justify-content-between mb-3">
+        <div>
+          <h5>
+            Order #{{ $index + 1 }}
+          </h5>
+          <small class="text-muted"> OrderID :{{order._id}}</small>
+        </div>
+        <div class="text-end">
+          <span class="order-status">{{order.status}}</span>
+        </div>
+
+        <strong>
+          ${{ order.total }}
+        </strong>
+
+      </div>
+
+
+      @for (item of order.items; track item.book._id) {
+
+      <div class="d-flex justify-content-between mb-2">
+
+        <div>
+
+          <h6>
+            {{ item.book.title }}
+          </h6>
+
+          <small class="text-muted">
+             {{ item.price }} * {{ item.quantity }}
+          </small>
+
+        </div>
+
+        <strong>
+           {{ item.price * item.quantity }}
+        </strong>
+
+      </div>
+
+      }
+
+    </div>
+
+    }
+
+    } @else {
+
+    <div class="text-center py-5">
+
+      <i class="bi bi-bag-x fs-1"></i>
+
+      <h4 class="mt-3">
+        No Orders Yet
+      </h4>
+
+      <p class="text-muted">
+        You haven't placed any orders yet.
+      </p>
+
+    </div>
+
+    }
+
+  </div>
+</div>

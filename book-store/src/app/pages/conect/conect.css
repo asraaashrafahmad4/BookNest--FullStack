@@ -1,0 +1,61 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f3ef 0%, #f5f3ef 100%);
+  padding: 40px 20px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #d8c4b6;
+  border-radius: 0 0 15px 15px;
+}
+
+.header h1 {
+  color: #7a1f3d;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.text {
+  color: #7a1f3d;
+  font-size: 30px;
+}
+
+.social-box{
+  width: 40px;
+  height: 40px;
+  background-color: #f5f3ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:50% ;
+  text-decoration: none;
+  -webkit-border-radius:50% ;
+}
+
+
+
+
+.social h4 {
+  color: #7a1f3d;
+}
+
+.btn {
+  background-color: #7a1f3d;
+}
+
+.btn:hover {
+  background-color: #5a1622;
+}
+
+.social .facebook {
+  color: #1877f2;
+}
+
+.social .insta {
+  color: #E1306C;
+}
+
+
+.social .linkd {
+  color: #0A66C2;
+}

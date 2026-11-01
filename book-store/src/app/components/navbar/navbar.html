@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-white shadow-sm px-3 book-navbar">
+  <div class="container-fluid">
+
+    <a class="navbar-brand  mx-2 fw-bold logo " routerLink="/">
+      <i class="bi bi-book-half "></i>
+      BookNest</a>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarcontent">
+
+      <i class="navbar-toggler-icon"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarcontent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 links">
+
+        <li class="nav-item">
+          <a class="nav-link fw-medium" routerLink="/" routerLinkActive="active">
+            Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-medium" routerLink="/books" routerLinkActive="active">Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-medium" routerLink="/about" routerLinkActive="active">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-medium" routerLink="/contact" routerLinkActive="active">Contact</a>
+        </li>
+
+        @if(isLoggedIn){
+        <li class="nav-item">
+          <a class="nav-link fw-medium " routerLink="/order" routerLinkActive="active">My Orders</a>
+        </li>
+        }
+
+        @if(isLoggedIn && isAdmin){
+        <li class="nav-item">
+          <a class="nav-link fw-medium " routerLink="/admin-dashboard" routerLinkActive="active">Admin Dashboard</a>
+        </li>
+        }
+      </ul>
+
+      <div class="d-flex align-items-center gap-3">
+
+
+        <a class="btn btn-link text-dark " routerLink="/books">
+          <i class="bi bi-search fs-5 search"></i></a>
+
+
+
+        <a class="btn btn-link text-dark" routerLink="/cart">
+          <i class="bi bi-cart3 fs-5 cart"></i></a>
+
+
+        @if(!isLoggedIn){
+        <a class="btn btn-outline-dark px-4 rounded-pill login " routerLink="/login" routerLinkActive="active">Login</a>
+
+        <a class="btn btn-dark px-4 rounded-pill sign-up" routerLink="/register" routerLinkActive="active">sign up</a>
+        }
+
+        @if(isLoggedIn){
+        <button class="logout btn btn-dark px-4 rounded-pill" (click)="logout()">Log out</button>
+        }
+
+
+      </div>
+    </div>
+  </div>
+</nav>

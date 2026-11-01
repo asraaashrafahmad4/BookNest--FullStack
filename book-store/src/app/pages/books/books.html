@@ -1,0 +1,54 @@
+<section class="books-section py-5">
+
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h1>All Books</h1>
+      <p>Find your next favorite book</p>
+      <p> number of books :{{ books().length}}</p>
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
+          <input class="rounded-pill form-control " type="text" placeholder="search for abook" (input)='searchbooks()'
+            [(ngModel)]="searchtext">
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      @for (book of filterbooks(); track book._id) {
+
+      <div class="col-12 col-sm-6 col-lg-3">
+
+        <div class="card h-100 shadow-sm d-flex flex-column ">
+
+          <img [src]="book.image"
+            class="card-img-top">
+
+          <div class="card-body d-flex flex-column flex-grow-1">
+
+            <h5 class="card-title">
+              {{ book.title }}
+            </h5>
+
+            <p class="card-text">
+              {{ book.author }}
+            </p>
+
+            <a [routerLink]='["/books-details",book._id]' class="btn btn-dark w-100 mt-auto">
+              View Details
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,20 @@
+.card-title {
+  color: #7a1f3d;
+}
+
+.card-text {
+  color: #212121;
+}
+
+.btn {
+  background-color: #7a1f3d;
+}
+
+.btn:hover {
+  background-color: #5a1622;
+}
+h1{
+  color: #7a1f3d;
+  font-weight: bold;
+  font-size: 45px;
+}

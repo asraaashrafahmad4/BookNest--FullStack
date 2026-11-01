@@ -1,0 +1,344 @@
+<section>
+  <div class="container py-5">
+    <div class="header mb-3">
+      <h1>Admin Dashboard</h1>
+      <p class="text-muted">Manage your books, users and orders</p>
+    </div>
+    <div class="admin-tabs mt-4 mb-4 d-flex gap-2 align-items-center">
+
+      <button class="btn " [class.active]="activeTab==='books'" (click)="settab('books')">
+        Books
+      </button>
+
+      <button class="btn " [class.active]="activeTab==='users'" (click)="settab('users')">
+        Users
+      </button>
+
+      <button class="btn" [class.active]="activeTab==='orders'" (click)="settab('orders')">
+        Orders
+      </button>
+
+    </div>
+    @if(activeTab==="books"){
+    <div class="d-flex justify-content-between align-items-center mb-5 mt-5 ">
+      <h3> Books Management</h3>
+      <button class="btn add-book-btn" (click)="showAddForm =!showAddForm">
+        <i class="bi bi-plus-circle text-white me-2"></i>
+        Add Book
+      </button>
+    </div>
+
+    @if(showAddForm){
+    <div class="card shadow-sm  p-4 mb-4">
+      <h4> Add New Book</h4>
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input class="form-control" type="text" [(ngModel)]="newbook.title" placeholder="Enter book title">
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Author</label>
+        <input class="form-control" type="text" [(ngModel)]="newbook.author" placeholder="Enter author name">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input class="form-control" type="number" [(ngModel)]="newbook.price" placeholder="Enter book price">
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Image URL</label>
+        <input class="form-control" type="text" [(ngModel)]="newbook.image" placeholder="Enter image URL">
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" rows="4" [(ngModel)]="newbook.description"
+          placeholder="Enter book description"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Tags</label>
+        <input class="form-control" type="text" [(ngModel)]="tagsInput" placeholder="Fantasy, Adventure, Magic">
+        <small class="text-muted">Separate tags with comnas</small>
+      </div>
+
+
+      <button class="btn" (click)="addBook()">
+        <i class=" bi bi-plus-circle  me-2"></i>
+        Add Book
+      </button>
+
+
+    </div>
+    }
+
+
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          @for(book of books; track book._id){
+
+          <tr>
+            <td>
+              <img [src]="book.image"
+              alt="book-image"
+              width="60"
+              height="80"
+              class="rounded">
+            </td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.price}}EGP</td>
+            <td><button class="btn btn-dark mx-2" (click)="editBook(book)">Edit</button>
+              <button class="btn btn-danger mx-2" (click)="deleteBook(book)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    }
+
+    @if(showEditForm && selectorBook){
+    <div class="card shadow-sm p-4 mb-4">
+      <h4> Edit Book</h4>
+
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control" [(ngModel)]="selectorBook.title">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Author</label>
+        <input type="text" class="form-control" [(ngModel)]="selectorBook.author">
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="number" class="form-control" [(ngModel)]="selectorBook.price">
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Image</label>
+        <input type="text" class="form-control" [(ngModel)]="selectorBook.image">
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea type="text" class="form-control " [(ngModel)]="selectorBook.description"></textarea>
+      </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Tags</label>
+        <input type="text" class="form-control" [(ngModel)]="editTagsInput">
+      </div>
+      <button class="btn btn-dark" (click)="saveEdit()">Update Book</button>
+    </div>
+
+    }
+
+
+    @if(activeTab==="users"){
+    <div class="d-flex justify-content-between align-items-center mb-5 mt-5">
+      <h3>Users Mangement</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+          @for(user of user;track user._id){
+          <tr>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.role}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteUser(user)">
+                Delete
+              </button>
+            </td>
+          </tr>
+
+          }
+        </tbody>
+
+      </table>
+    </div>
+
+    }
+
+
+    @if(activeTab==="orders"){
+    <div class="d-flex justify-content-between align-items-center mb-5 mt-5">
+      <h3>Orders Management</h3>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Email</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Action</th>
+
+          </tr>
+
+        </thead>
+        <tbody>
+          @for(order of orderlist;track order._id){
+          <tr>
+            <td> {{order._id}}</td>
+            <td> {{order.customer.name}}</td>
+            <td> {{order.customer.email}}</td>
+            <td> {{order.total}}</td>
+            <td>
+              <select class="form-select" [value]="order.status" (change)="updateOrderStatus(order, $event)">
+
+                <option value="Pending">Pending</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+
+              </select>
+            </td>
+            <td>
+              <button class="btn btn-dark" (click)="viewOrder(order)">
+                View
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if(showOrderModel && selectorOrder){
+    <div class="order-modal">
+      <div class="order-modal-dialog">
+        <div class="order-modal-content">
+          <div class="modal-header">
+            <h5>Order Details</h5>
+            <button class="btn-close" (click)="closeOrderModel()" type="button"></button>
+
+          </div>
+          <div class="modal-body">
+            <p>
+              <strong>Order ID :
+                {{selectorOrder._id}}
+              </strong>
+            </p>
+
+
+            <p>
+              <strong>Customer :
+                {{selectorOrder.customer.name}}
+              </strong>
+            </p>
+
+
+            <p>
+              <strong>Email :
+                {{selectorOrder.customer.email}}
+              </strong>
+            </p>
+
+
+            <p>
+              <strong>Phone :
+                {{selectorOrder.customer.phone}}
+              </strong>
+            </p>
+
+
+            <p>
+              <strong>Address :
+                {{selectorOrder.customer.address}}
+              </strong>
+            </p>
+
+
+            <p>
+              <strong>Total :
+                {{selectorOrder.total}}
+              </strong>
+            </p>
+
+            <p>
+              <strong>Status :
+                {{selectorOrder.status}}
+              </strong>
+            </p>
+
+            <h6 class="mt-4 mb-3 ">Order Items</h6>
+            @for(item of selectorOrder.items;track item._id){
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
+              <div>
+                <strong>{{item.book.title}}</strong>
+
+                <div class="text-muted"> {{item.price}} EGP *{{item.quantity}}
+
+                </div>
+              </div>
+
+
+              <strong>
+                {{item.price *item.quantity}} EGP
+              </strong>
+            </div>
+            }
+            <hr>
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
+              <strong> Total Order</strong>
+              <strong>
+                {{selectorOrder.total}} EGP
+              </strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    }
+    }
+
+
+
+
+  </div>
+</section>

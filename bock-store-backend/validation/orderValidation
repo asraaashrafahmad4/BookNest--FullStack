@@ -1,0 +1,29 @@
+const { body } = require('express-validator')
+
+let validation = [
+    body('customer.name')
+        .notEmpty()
+        .withMessage('Name is required'),
+
+    body('customer.email')
+        .notEmpty()
+        .withMessage('Email is required'),
+
+    body('customer.phone')
+        .notEmpty()
+        .withMessage('Phone is required'),
+
+    body('customer.address')
+        .notEmpty()
+        .withMessage('Address is required'),
+
+    body('items')
+        .notEmpty()
+        .withMessage('Items are required'),
+
+    body('total')
+        .notEmpty()
+        .withMessage('Total is required')
+]
+
+module.exports = validation

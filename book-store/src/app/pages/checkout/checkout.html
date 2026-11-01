@@ -1,0 +1,116 @@
+<div class="check-page">
+
+<div class="container py-5">
+
+  <h2 class="mb-4">Checkout</h2>
+
+  <div class="row g-4">
+
+    <div class="col-md-7">
+
+      <div class="card p-4 shadow-sm">
+
+        <h4 class="mb-4">
+          Customer Information
+        </h4>
+
+        <form #checkoutForm="ngForm" (ngSubmit)="placeorder(checkoutForm)">
+
+          <div class="mb-3 col-md-6">
+            <label class="form-label">
+              Email
+            </label>
+
+            <input [(ngModel)]="email" name="email" class="form-control" type="email" placeholder="Enter your email"
+              required>
+          </div>
+
+          <div class="mb-3 col-md-6">
+            <label class="form-label">
+              Name
+            </label>
+
+            <input [(ngModel)]="name" name="name" class="form-control" type="text" placeholder="Enter your name"
+              required>
+          </div>
+
+          <div class="mb-3 col-md-6">
+            <label class="form-label">
+              Phone
+            </label>
+
+            <input [(ngModel)]="phone" name="phone" class="form-control" type="tel" placeholder="Enter your phone"
+              required>
+          </div>
+
+          <div class="mb-3 col-md-6">
+            <label class="form-label">
+              Address
+            </label>
+
+            <input [(ngModel)]="address" name="address" class="form-control" type="text"
+              placeholder="Enter your address" required>
+          </div>
+
+          <button class="btn btn-dark" type="submit">
+            Place Order
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+    <div class="col-md-5">
+
+      <div class="card shadow-sm p-4">
+
+        <h4 class="mb-4">
+          Order Summary
+        </h4>
+
+        @for(item of cartitem; track item.book._id) {
+
+        <div class="d-flex justify-content-between mb-3">
+
+          <div>
+            <h6>
+              {{ item.book.title }}
+            </h6>
+
+            <small class="text-muted">
+              ${{ item.price }} × {{ item.quantity }}
+            </small>
+          </div>
+
+          <strong>
+            ${{ item.price * item.quantity }}
+          </strong>
+
+        </div>
+
+        }
+
+        <!-- Total -->
+        <div class="d-flex justify-content-between border-top pt-3">
+
+          <h5>
+            Total
+          </h5>
+
+          <h5>
+            ${{ gettotal() }}
+          </h5>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
